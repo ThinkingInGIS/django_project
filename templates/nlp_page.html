@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>文本分类预测</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 400px;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 90%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+        button {
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #357ab8;
+        }
+        .result {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #444;
+            padding: 15px;
+            background: #f0f4f8;
+            border-radius: 10px;
+            border-left: 5px solid #4a90e2;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+        <h1>请输入一句话</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="text" placeholder="输入一句话" >
+            <br>
+            <button type="submit">提交</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                {{ result }}
+            </div>
+        {% endif %}
+     </div>
+
+</body>
+</html>
